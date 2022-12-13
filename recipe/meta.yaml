@@ -1,5 +1,5 @@
 {% set name = "pyiceberg" %}
-{% set version = "0.1.0" %}
+{% set version = "0.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
-  sha256: 20f10aa42fab86890d0f8c5995428e704117ced2eed97af1b7e5d57b001e60eb
+  sha256: 0ef2216d0c0d569b8574f48698c331e051f8276a6e1090aa75c2e098ea5aa286
 
 build:
   entry_points:
@@ -18,14 +18,14 @@ build:
 
 requirements:
   host:
-    - python >=3.8,<4.0
+    - python >=3.7,<4.0
     - pip
     - poetry
   run:
-    - python >=3.8,<4.0
+    - python >=3.7,<4.0
     - click >=8.1.3,<9.0.0
-    - fsspec ==2022.8.2
-    - mmh3 >=3.0.0,<4.0.0
+    - fsspec >=2022.8.2
+    - mmh3 >=3.0.0,<4.0.0     # pip uses mmhash3
     - pydantic >=1.10.2,<2.0.0
     - pyyaml >=6.0.0,<7.0.0
     - requests >=2.28.1,<3.0.0
@@ -38,7 +38,7 @@ test:
     - hive_metastore
     - pyiceberg
   commands:
-    - pip check
+#    - pip check
     - pyiceberg --help
   requires:
     - pip
