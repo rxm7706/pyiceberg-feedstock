@@ -1,5 +1,5 @@
 {% set name = "pyiceberg" %}
-{% set version = "0.2.1" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
-  sha256: 0e79b5b59a1cbe5183a69c6b759b78ebdbb8611dfeb1b984d048625077b983ba
+  sha256: c2a28e6024487670970bfd0e18628451ccb1136e1100dd2d3fd20f12bb494963
 
 build:
   entry_points:
     - pyiceberg = pyiceberg.cli.console:run
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 3
+  number: 0
 
 requirements:
   host:
