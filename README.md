@@ -1,11 +1,11 @@
-About pyiceberg
-===============
+About pyiceberg-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pyiceberg-feedstock/blob/main/LICENSE.txt)
 
 Home: https://iceberg.apache.org/
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pyiceberg-feedstock/blob/main/LICENSE.txt)
 
 Summary: Apache Iceberg is an open table format for huge analytic datasets
 
