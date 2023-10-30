@@ -1,5 +1,5 @@
 {% set name = "pyiceberg" %}
-{% set version = "0.5.0" %}
+{% set version = "0.5.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
-  sha256: ffa6522407dd26b634dbb5a109127b52d01a1b72413863c4a2e684b79f598e7f
+  sha256: d9e8d1badb576472bd10ccad3ccfdd193027a1892c493e6bb04ed61d8fb57458
 
 build:
   entry_points:
@@ -27,14 +27,15 @@ requirements:
   run:
     - python >=3.8.0,<4.0.0
     - mmhash3 >=3.0.0,<4.0.0
+    - mmh3 >=3.0.0,<4.0.0     # pip uses mmhash3
     - requests >=2.20.0,<3.0.0
     - click >=7.1.1,<9.0.0
     - rich >=10.11.0,<14.0.0
     - strictyaml >=1.7.0,<2.0.0
-    - pydantic >=1.0,<3.0
-    - sortedcontainers >=2.4.0
+    - pydantic >=2.0,<3.0,!=2.4.0,!=2.4.1
+    - sortedcontainers ==2.4.0
     - fsspec >=2023.1.0,<2024.1.0
-    - pyparsing >=3.0.0,<4.0.0
+    - pyparsing >=3.1.0,<4.0.0
     - zstandard >=0.13.0,<1.0.0
   run_constrained:
     - pyarrow >=9.0.0,<14.0.0
