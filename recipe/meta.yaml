@@ -13,8 +13,8 @@ build:
   entry_points:
     - pyiceberg = pyiceberg.cli.console:run
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   host:
@@ -38,7 +38,8 @@ requirements:
     - pyparsing >=3.1.0,<4.0.0
     - zstandard >=0.13.0,<1.0.0
   run_constrained:
-    - pyarrow >=9.0.0,<14.0.0
+    # https://github.com/apache/iceberg-python/blob/main/pyproject.toml#L60C1-L60C59
+    - pyarrow >=9.0.0,<15.0.0
     - pandas >=1.0.0,<3.0.0
     - duckdb >=0.5.0,<1.0.0
     - ray >=2.0.0,<3.0.0
