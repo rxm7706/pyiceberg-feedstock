@@ -1,5 +1,5 @@
 {% set name = "pyiceberg" %}
-{% set version = "0.6.0rc3" %}
+{% set version = "0.6.0rc6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
-  sha256: c7672023f56724fb188a69f73c9288e754ed6fd7ee4477c72cfdac21fda464d6
+  sha256: 495038288fbc90e0dafed8676104c7311ec1a02a5ef5f23ed6f1a0ac94344d9c
 
 build:
   entry_points:
