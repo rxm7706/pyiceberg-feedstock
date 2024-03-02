@@ -14,7 +14,7 @@ build:
     - pyiceberg = pyiceberg.cli.console:run
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -38,19 +38,35 @@ requirements:
     - pyparsing >=3.1.0,<4.0.0
     - zstandard >=0.13.0,<1.0.0
   run_constrained:
-    # https://github.com/apache/iceberg-python/blob/main/pyproject.toml#L60C1-L60C59
-    - pyarrow >=9.0.0,<15.0.0
+# https://github.com/apache/iceberg-python/blob/main/pyproject.toml#L60C1-L60C59
+#pyarrow = { version = ">=9.0.0,<16.0.0", optional = true }
+#pandas = { version = ">=1.0.0,<3.0.0", optional = true }
+#duckdb = { version = ">=0.5.0,<1.0.0", optional = true }
+#ray = { version = ">=2.0.0,<2.10.0", optional = true }
+#python-snappy = { version = ">=0.6.0,<1.0.0", optional = true }
+#thrift = { version = ">=0.13.0,<1.0.0", optional = true }
+#mypy-boto3-glue = { version = ">=1.28.18", optional = true }
+#boto3 = { version = ">=1.24.59", optional = true }
+#3fs = { version = ">=2023.1.0,<2024.1.0", optional = true }
+#adlfs = { version = ">=2023.1.0,<2024.3.0", optional = true }
+#gcsfs = { version = ">=2023.1.0,<2024.1.0", optional = true }
+#psycopg2-binary = { version = ">=2.9.6", optional = true }
+#sqlalchemy = { version = "^2.0.18", optional = true }
+#getdaft = { version = ">=0.2.12", optional = true }
+    - pyarrow >=9.0.0,<16.0.0
     - pandas >=1.0.0,<3.0.0
     - duckdb >=0.5.0,<1.0.0
-    - ray >=2.0.0,<3.0.0
+    - ray >=2.0.0,<2.10.0
     - python-snappy >=0.6.0,<1.0.0
     - thrift >=0.13.0,<1.0.0
+    - mypy-boto3-glue >=1.28.18
     - boto3 >=1.24.59
     - s3fs >=2023.1.0,<2024.1.0
-    - adlfs >=2023.1.0,<2024.1.0
+    - adlfs >=2023.1.0,<2024.3.0
     - gcsfs >=2023.1.0,<2024.1.0
     - psycopg2-binary >=2.9.6
     - sqlalchemy >=1.4.0,<3.0.0
+    #- getdaft >=0.2.12
 
 test:
   imports:
