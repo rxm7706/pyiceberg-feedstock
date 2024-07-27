@@ -1,5 +1,5 @@
 {% set name = "pyiceberg" %}
-{% set version = "0.6.1" %}
+{% set version = "0.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
-  sha256: f4ba94fb22a70a05bc7e705f34649f5f3352f6a7ea0a7c0c78c9f715dd67c45d
+  sha256: 1ccafcf173d093fe90de1259fdf8c116185e0fb762d7451964ba4fccf056a034
 
 build:
   entry_points:
@@ -27,16 +27,17 @@ requirements:
   run:
     - python >=3.8.0,<4.0.0
     - mmhash3 >=3.0.0,<4.0.0
-    - mmh3 >=3.0.0,<4.0.0     # pip uses mmhash3
+    - mmh3 >=4.0.0,<5.0.0     # pip uses mmhash3
     - requests >=2.20.0,<3.0.0
     - click >=7.1.1,<9.0.0
     - rich >=10.11.0,<14.0.0
     - strictyaml >=1.7.0,<2.0.0
     - pydantic >=2.0,<3.0,!=2.4.0,!=2.4.1
     - sortedcontainers ==2.4.0
-    - fsspec >=2023.1.0,<2024.1.0
+    - fsspec >=2023.1.0,<2025.1.0
     - pyparsing >=3.1.0,<4.0.0
     - zstandard >=0.13.0,<1.0.0
+    - tenacity >=8.2.3,<9.0.0
   run_constrained:
 # https://github.com/apache/iceberg-python/blob/main/pyproject.toml#L60C1-L60C59
 #pyarrow = { version = ">=9.0.0,<16.0.0", optional = true }
@@ -53,20 +54,21 @@ requirements:
 #psycopg2-binary = { version = ">=2.9.6", optional = true }
 #sqlalchemy = { version = "^2.0.18", optional = true }
 #getdaft = { version = ">=0.2.12", optional = true }
-    - pyarrow >=9.0.0,<16.0.0
+    - pyarrow >=9.0.0,<18.0.0
     - pandas >=1.0.0,<3.0.0
     - duckdb >=0.5.0,<1.0.0
-    - ray >=2.0.0,<2.10.0
+    - ray >=2.0.0,<3.0.0
     - python-snappy >=0.6.0,<1.0.0
     - thrift >=0.13.0,<1.0.0
     - mypy-boto3-glue >=1.28.18
     - boto3 >=1.24.59
     - s3fs >=2023.1.0,<2024.1.0
-    - adlfs >=2023.1.0,<2024.3.0
+    - adlfs >=2023.1.0,<2024.8.0
     - gcsfs >=2023.1.0,<2024.1.0
     - psycopg2-binary >=2.9.6
-    - sqlalchemy >=1.4.0,<3.0.0
-    #- getdaft >=0.2.12
+    - sqlalchemy >=2.0.18,<3.0.0
+    - getdaft >=0.2.12
+    - numpy >=1.22.4
 
 test:
   imports:
