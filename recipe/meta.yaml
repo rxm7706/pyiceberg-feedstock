@@ -1,43 +1,44 @@
 {% set name = "pyiceberg" %}
-{% set version = "0.7.1" %}
+{% set version = "0.8.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
-  sha256: 2fd8f9717b02673cb9cabe7aed82fc38933241b2bd15cbdc1ff7371e70317a47
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
+  sha256: 29d27fe9b1ca9518592443579292ed89c3ba74115eb6a3fa2daeaed9f32de7ca
 
 build:
   entry_points:
     - pyiceberg = pyiceberg.cli.console:run
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
-    - python >=3.8,<4.0
+    - python >=3.9,!=3.13.*,<4.0
     - poetry-core >=1.0.0
     - wheel
     - cython >=3.0.0
     - setuptools
     - pip
   run:
-    - python >=3.8.0,<4.0.0
+    - python >=3.9,!=3.13.*,<4.0
     - mmhash3 >=3.0.0,<4.0.0
     - mmh3 >=4.0.0,<5.0.0     # pip uses mmhash3
     - requests >=2.20.0,<3.0.0
     - click >=7.1.1,<9.0.0
     - rich >=10.11.0,<14.0.0
     - strictyaml >=1.7.0,<2.0.0
-    - pydantic >=2.0,<3.0,!=2.4.0,!=2.4.1
+    - pydantic >=2.0,<3.0,!=2.4.0,!=2.4.1  # 2.4.0, 2.4.1 has a critical bug
     - sortedcontainers ==2.4.0
-    - fsspec >=2023.1.0,<2025.1.0
+    - fsspec >=2023.1.0
     - pyparsing >=3.1.0,<4.0.0
     - zstandard >=0.13.0,<1.0.0
-    - tenacity >=8.2.3,<9.0.0
+    - tenacity >=8.2.3,<10.0.0
+    - cachetools >=5.5.0,<6.0.0
   run_constrained:
 # https://github.com/apache/iceberg-python/blob/main/pyproject.toml#L60C1-L60C59
 #pyarrow = { version = ">=9.0.0,<16.0.0", optional = true }
@@ -54,19 +55,19 @@ requirements:
 #psycopg2-binary = { version = ">=2.9.6", optional = true }
 #sqlalchemy = { version = "^2.0.18", optional = true }
 #getdaft = { version = ">=0.2.12", optional = true }
-    - pyarrow >=9.0.0,<18.0.0
+    - pyarrow >=9.0.0,<19.0.0
     - pandas >=1.0.0,<3.0.0
-    - duckdb >=0.5.0,<1.0.0
-    - ray >=2.0.0,<3.0.0
+    - duckdb >=0.5.0,<2.0.0
+    - ray >=2.10.0,<3.0.0
     - python-snappy >=0.6.0,<1.0.0
     - thrift >=0.13.0,<1.0.0
     - mypy-boto3-glue >=1.28.18
     - boto3 >=1.24.59
-    - s3fs >=2023.1.0,<2024.1.0
-    - adlfs >=2023.1.0,<2024.8.0
-    - gcsfs >=2023.1.0,<2024.1.0
+    - s3fs >=2023.1.0
+    - adlfs >=2023.1.0
+    - gcsfs >=2023.1.0
     - psycopg2-binary >=2.9.6
-    - sqlalchemy >=1.4.0,<3.0.0
+    - sqlalchemy >=2.0.18,<3.0.0
     - getdaft >=0.2.12
     - numpy >=1.22.4
 
@@ -79,6 +80,7 @@ test:
     - pip check
     - pyiceberg --help
   requires:
+    - python >=3.9,!=3.13.*,<4.0
     - pip
 
 about:
