@@ -32,14 +32,14 @@ Current release info
 Installing pyiceberg
 ====================
 
-Installing `pyiceberg` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `pyiceberg` from the `conda-forge/label/pyiceberg_rc` channel can be achieved by adding `conda-forge/label/pyiceberg_rc` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/pyiceberg_rc
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `pyiceberg` can be installed with `conda`:
+Once the `conda-forge/label/pyiceberg_rc` channel has been enabled, `pyiceberg` can be installed with `conda`:
 
 ```
 conda install pyiceberg
@@ -54,26 +54,26 @@ mamba install pyiceberg
 It is possible to list all of the versions of `pyiceberg` available on your platform with `conda`:
 
 ```
-conda search pyiceberg --channel conda-forge
+conda search pyiceberg --channel conda-forge/label/pyiceberg_rc
 ```
 
 or with `mamba`:
 
 ```
-mamba search pyiceberg --channel conda-forge
+mamba search pyiceberg --channel conda-forge/label/pyiceberg_rc
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search pyiceberg --channel conda-forge
+mamba repoquery search pyiceberg --channel conda-forge/label/pyiceberg_rc
 
 # List packages depending on `pyiceberg`:
-mamba repoquery whoneeds pyiceberg --channel conda-forge
+mamba repoquery whoneeds pyiceberg --channel conda-forge/label/pyiceberg_rc
 
 # List dependencies of `pyiceberg`:
-mamba repoquery depends pyiceberg --channel conda-forge
+mamba repoquery depends pyiceberg --channel conda-forge/label/pyiceberg_rc
 ```
 
 
@@ -144,4 +144,5 @@ Feedstock Maintainers
 =====================
 
 * [@rxm7706](https://github.com/rxm7706/)
+* [@xhochy](https://github.com/xhochy/)
 
