@@ -72,7 +72,6 @@ test:
     - pip check
     - pyiceberg --help
   requires:
-    - python
     - pip
 
 about:
