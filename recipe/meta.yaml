@@ -12,20 +12,25 @@ source:
 build:
   entry_points:
     - pyiceberg = pyiceberg.cli.console:run
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 1
 
 requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython >=3.0.0                         # [build_platform != target_platform]
+    - {{ stdlib("c") }}
+    - {{ compiler("cxx") }}
   host:
-    - python {{ python_min }}
+    - python
     - poetry-core >=1.0.0
     - wheel
     - cython >=3.0.0
     - setuptools
     - pip
   run:
-    - python >={{ python_min }},<4.0
+    - python
     - mmhash3 >=3.0.0,<4.0.0
     - mmh3 >=4.0.0,<5.0.0     # pip uses mmhash3
     - requests >=2.20.0,<3.0.0
@@ -62,11 +67,12 @@ test:
     - fb303
     - hive_metastore
     - pyiceberg
+    - pyiceberg.avro.decoder_fast # Test compiled module
   commands:
     - pip check
     - pyiceberg --help
   requires:
-    - python {{ python_min }}
+    - python
     - pip
 
 about:
