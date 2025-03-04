@@ -1,5 +1,6 @@
 {% set name = "pyiceberg" %}
-{% set version = "0.8.1" %}
+{% set version = "0.9.0" %}
+{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +8,13 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
-  sha256: 4502f0cfddf6f7cd48b9cd54016bce0ab94052b0ab01efcfa515879074f4c8e3
+  sha256: 70d255903dda31ed1f7753d41fec0c031aae36ef95e8a824cdae7df593439d8b
 
 build:
   entry_points:
     - pyiceberg = pyiceberg.cli.console:run
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 3
+  number: 2
 
 requirements:
   build:
@@ -47,7 +48,7 @@ requirements:
     - cachetools >=5.5.0,<6.0.0
   run_constrained:
     # https://github.com/apache/iceberg-python/blob/main/pyproject.toml#L60C1-L60C59
-    - pyarrow >=9.0.0,<19.0.0
+    - pyarrow >=17.0.0,<20.0.0
     - pandas >=1.0.0,<3.0.0
     - duckdb >=0.5.0,<2.0.0
     - ray >=2.10.0,<3.0.0
@@ -61,7 +62,6 @@ requirements:
     - psycopg2-binary >=2.9.6
     - sqlalchemy >=2.0.18,<3.0.0
     - getdaft >=0.2.12
-    - numpy >=1.22.4
 
 test:
   imports:
