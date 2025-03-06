@@ -14,7 +14,7 @@ build:
   entry_points:
     - pyiceberg = pyiceberg.cli.console:run
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 3
 
 requirements:
   build:
