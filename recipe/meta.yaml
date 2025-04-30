@@ -1,5 +1,5 @@
 {% set name = "pyiceberg" %}
-{% set version = "0.9.0" %}
+{% set version = "0.9.1" %}
 {% set python_min = "3.9" %}
 
 package:
@@ -8,13 +8,13 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyiceberg-{{ version }}.tar.gz
-  sha256: 70d255903dda31ed1f7753d41fec0c031aae36ef95e8a824cdae7df593439d8b
+  sha256: 3634134ce33859a441768b39df179b2c6f3de2bbbf506622884f553b013ee799
 
 build:
   entry_points:
     - pyiceberg = pyiceberg.cli.console:run
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 3
+  number: 0
 
 requirements:
   build:
