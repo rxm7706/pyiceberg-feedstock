@@ -9,6 +9,14 @@ Package license: Apache-2.0
 
 Summary: Apache Iceberg is an open table format for huge analytic datasets
 
+Development: https://github.com/apache/iceberg
+
+Documentation: https://iceberg.apache.org/docs/nightly/
+
+"Iceberg is a high-performance format for huge analytic tables.
+Iceberg brings the reliability and simplicity of SQL tables to big data, while making it possible for engines like 
+Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time."
+
 Current build status
 ====================
 
