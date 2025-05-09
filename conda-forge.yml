@@ -1,5 +1,3 @@
-bot:
-  automerge: true
 build_platform:
   linux_aarch64: linux_64
   osx_arm64: osx_64
@@ -10,3 +8,10 @@ github:
   branch_name: main
   tooling_branch_name: main
 test: native_and_emulated
+bot:
+  automerge: true
+  inspection: hint-all
+  check_solvable: true
+  run_deps_from_wheel: true
+conda_install_tool: pixi
+conda_build_tool: rattler-build
